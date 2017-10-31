@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff7800</color>
+    <color name="colorPrimaryDark">#ff7800</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="textGray">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+
+
+    <color name="title_color">#ff7800</color>
+    <color name="blue_btn_pressed">#ff96bfd2</color>
+    <color name="blue_btn_unpressed">#ffaedef4</color>
+</resources>

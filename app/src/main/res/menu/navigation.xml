@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dc_home"
+        android:icon="@mipmap/home_pressed"
+        android:title="首页"/>
+
+    <item
+        android:id="@+id/dc_live"
+        android:icon="@mipmap/live_pressed"
+        android:title="直播"/>
+
+    <item
+        android:id="@+id/dc_video"
+        android:icon="@mipmap/video"
+        android:title="视频"/>
+
+    <item
+        android:id="@+id/dc_follow"
+        android:icon="@mipmap/follow_pressed"
+        android:title="关注"/>
+
+    <item
+        android:id="@+id/dc_user"
+        android:icon="@mipmap/user_pressed"
+        android:title="我的"/>
+
+</menu>
