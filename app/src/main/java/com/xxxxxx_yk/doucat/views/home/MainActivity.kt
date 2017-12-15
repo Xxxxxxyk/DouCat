@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentTransaction
 import android.view.MenuItem
 import android.view.View
+import com.blankj.utilcode.util.FragmentUtils
 import com.xxxxxx_yk.doucat.BaseActivity
 import com.xxxxxx_yk.doucat.R
 import com.xxxxxx_yk.doucat.ui.ViewToKotlin.bottomNavigationView
@@ -17,7 +18,6 @@ import org.jetbrains.anko.*
 class MainActivity : BaseActivity() {
 
     var bnv_btn: BottomNavigationView? = null
-    var fragmentTransaction: FragmentTransaction? = null
     var home_fragment : HomeFragment = HomeFragment()
     var live_fragment : LiveFragment = LiveFragment()
     var video_fragment : VideoFragment = VideoFragment()
@@ -50,23 +50,23 @@ class MainActivity : BaseActivity() {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
             when (item.itemId) {
                 R.id.dc_home -> {
-                    fragmentTransaction!!.show(home_fragment).hide(live_fragment).hide(video_fragment).hide(follow_fragment).hide(user_fragment).commit()
+                    FragmentUtils.replace(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_live -> {
-                    fragmentTransaction!!.show(live_fragment).hide(home_fragment).hide(video_fragment).hide(follow_fragment).hide(user_fragment).commit()
+                    FragmentUtils.replace(supportFragmentManager,live_fragment,ViewID.FL_FRAGMENT)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_video -> {
-                    fragmentTransaction!!.show(video_fragment).hide(live_fragment).hide(home_fragment).hide(follow_fragment).hide(user_fragment).commit()
+                    FragmentUtils.replace(supportFragmentManager,video_fragment,ViewID.FL_FRAGMENT)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_follow -> {
-                    fragmentTransaction!!.show(follow_fragment).hide(live_fragment).hide(video_fragment).hide(home_fragment).hide(user_fragment).commit()
+                    FragmentUtils.replace(supportFragmentManager,follow_fragment,ViewID.FL_FRAGMENT)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_user -> {
-                    fragmentTransaction!!.show(user_fragment).hide(live_fragment).hide(video_fragment).hide(follow_fragment).hide(home_fragment).commit()
+                    FragmentUtils.replace(supportFragmentManager,user_fragment,ViewID.FL_FRAGMENT)
                     return@setOnNavigationItemSelectedListener true
                 }
             }
@@ -75,13 +75,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-        fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction!!.add(ViewID.FL_FRAGMENT, home_fragment)
-        fragmentTransaction!!.add(ViewID.FL_FRAGMENT, live_fragment)
-        fragmentTransaction!!.add(ViewID.FL_FRAGMENT, video_fragment)
-        fragmentTransaction!!.add(ViewID.FL_FRAGMENT, follow_fragment)
-        fragmentTransaction!!.add(ViewID.FL_FRAGMENT, user_fragment)
-        fragmentTransaction!!.show(home_fragment).hide(live_fragment).hide(video_fragment).hide(follow_fragment).hide(user_fragment).commit()
+        FragmentUtils.add(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT)
     }
 
     override fun otherClick(v: View?) {

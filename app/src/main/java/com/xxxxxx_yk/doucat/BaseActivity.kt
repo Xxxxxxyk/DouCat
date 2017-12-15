@@ -3,7 +3,6 @@ package com.xxxxxx_yk.doucat
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.vondear.rxtools.RxBarUtils
 import com.xxxxxx_yk.doucat.interfaces.IBaseView
 
 /**

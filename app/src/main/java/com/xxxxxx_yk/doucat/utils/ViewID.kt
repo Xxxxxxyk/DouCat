@@ -17,5 +17,6 @@ class ViewID {
         val FL_FRAGMENT = 3
         val VIEW_PAGER = 4
         val INDICATOR = 5
+        val LOGIN_BUTTON = 6
     }
 }

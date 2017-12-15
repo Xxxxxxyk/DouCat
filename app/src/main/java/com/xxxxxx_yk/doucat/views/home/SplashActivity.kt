@@ -2,17 +2,21 @@ package com.xxxxxx_yk.doucat.views.home
 
 import android.os.Handler
 import android.view.View
-import com.vondear.rxtools.RxSPUtils
+import com.blankj.utilcode.util.SPUtils
 import com.xxxxxx_yk.doucat.BaseActivity
 import com.xxxxxx_yk.doucat.R
 import com.xxxxxx_yk.doucat.utils.Constant
-import org.jetbrains.anko.*
+import org.jetbrains.anko.backgroundResource
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.verticalLayout
 
 /**
  * Created by 华农天时-Qiuzi on 2017/9/20.
  */
 
 class SplashActivity : BaseActivity() {
+
+    var spUtils = SPUtils.getInstance()
 
     override fun initView() {
         verticalLayout {
@@ -26,10 +30,10 @@ class SplashActivity : BaseActivity() {
 
     override fun initData() {
         Handler().postDelayed({
-            if (RxSPUtils.getBoolean(this, Constant.IS_AGAIN_COME)) {
+            if (spUtils.getBoolean(Constant.IS_AGAIN_COME)) {
                 startActivity<MainActivity>()
             } else {
-                RxSPUtils.putBoolean(this, Constant.IS_AGAIN_COME, true)
+                spUtils.put(Constant.IS_AGAIN_COME, true)
                 startActivity<WelcomeActivity>()
             }
             finish()

@@ -45,9 +45,13 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okio:okio:$okio_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$scalars_version"
+
 
     implementation 'com.github.kimkevin:slidingicontablayout:1.0.0'
 
-    implementation 'com.github.vondear:RxTools:v1.7.3.9'
+    implementation "com.blankj:utilcode:$utils_version"
 
 }

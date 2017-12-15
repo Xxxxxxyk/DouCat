@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
                 }.lparams(height = 120, width = matchParent)
                 vp = viewPager {
                     id = ViewID.VIEW_PAGER
-                    adapter = HomeAdapter(fragmentManager, list!!, Constant.TITLE)
+                    adapter = HomeAdapter(childFragmentManager, list!!, Constant.TITLE)
                 }.lparams(width = matchParent, height = matchParent)
             }
             indicator!!.setViewPager(vp)

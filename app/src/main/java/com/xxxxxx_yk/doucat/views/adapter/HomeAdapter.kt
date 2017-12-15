@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.view.ViewGroup
+import com.blankj.utilcode.util.LogUtils
 
 /**
  * Created by 华农天时-Qiuzi on 2017/10/16.

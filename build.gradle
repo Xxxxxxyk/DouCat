@@ -6,6 +6,10 @@ buildscript {
     ext.rxkotlin_version = '2.1.0'
     ext.retrofit_version = '2.3.0'
     ext.rxAndroid_version = '2.0.1'
+    ext.utils_version = '1.9.12'
+    ext.okio_version = '1.13.0'
+    ext.scalars_version = '2.1.0'
+    ext.logging_version = '3.4.1'
     repositories {
         maven { url 'https://maven.google.com' }
         jcenter()
