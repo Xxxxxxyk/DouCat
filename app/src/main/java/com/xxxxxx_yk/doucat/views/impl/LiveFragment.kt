@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.xxxxxx_yk.doucat.views.BaseFragment
 import org.jetbrains.anko.centerInParent
 import org.jetbrains.anko.relativeLayout
 import org.jetbrains.anko.support.v4.UI
@@ -14,13 +15,25 @@ import org.jetbrains.anko.textView
 /**
  * Created by 华农天时-Qiuzi on 2017/9/25.
  */
-class LiveFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+class LiveFragment : BaseFragment() {
 
-        return createView()
+    var isPrepared: Boolean = false
+    var mHasLoadedOnce: Boolean = false
+
+    override fun initListeren() {
     }
 
-    fun createView(): View {
+    override fun initData() {
+        if (!isPrepared || !isVisible || mHasLoadedOnce) {
+            return
+        }
+        mHasLoadedOnce = true
+    }
+
+    override fun otherClick(v: View?) {
+    }
+
+    override fun createView(): View {
         return UI {
             relativeLayout() {
                 textView {
@@ -31,5 +44,6 @@ class LiveFragment : Fragment() {
                 }
             }
         }.view
+        isPrepared = true
     }
 }

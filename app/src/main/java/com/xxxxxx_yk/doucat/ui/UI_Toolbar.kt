@@ -32,8 +32,9 @@ internal object UI_Toolbar {
                     imageView (R.drawable.img_history) { isClickable = true }.lparams(width = 60, height = 60) { rightMargin = 35 }
                     imageView (R.drawable.img_scanner){ isClickable = true }.lparams(width = 60, height = 60) { rightMargin = 35 }
                     imageView (R.drawable.img_search){ isClickable = true }.lparams(width = 60, height = 60) { rightMargin = 35 }
-                }.lparams(height = matchParent , width = wrapContent) {
+                }.lparams(height = wrapContent , width = wrapContent) {
                     alignParentRight()
+                    centerVertically()
                 }
             }
         }

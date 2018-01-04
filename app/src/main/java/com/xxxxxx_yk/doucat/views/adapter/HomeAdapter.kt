@@ -10,13 +10,14 @@ import com.blankj.utilcode.util.LogUtils
 /**
  * Created by 华农天时-Qiuzi on 2017/10/16.
  */
-class HomeAdapter(fm : FragmentManager? ,var list : List<Fragment> , var title : Array<String>) : FragmentPagerAdapter(fm){
+class HomeAdapter(fm : FragmentManager? ,var list : List<Fragment> , var title : List<String>) : FragmentPagerAdapter(fm){
 
     override fun getItem(position: Int): Fragment {
         return list[position]
     }
 
     override fun getCount(): Int {
+        LogUtils.e("shuliangshi${list.size}")
         return  list.size
     }
 

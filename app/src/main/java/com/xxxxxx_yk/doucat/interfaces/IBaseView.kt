@@ -25,4 +25,5 @@ interface IBaseView {
      * 点击事件
      */
     fun otherClick(v : View?)
+
 }

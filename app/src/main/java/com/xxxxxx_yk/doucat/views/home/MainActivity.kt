@@ -3,19 +3,22 @@ package com.xxxxxx_yk.doucat.views.home
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.FragmentTransaction
 import android.view.MenuItem
 import android.view.View
 import com.blankj.utilcode.util.FragmentUtils
-import com.xxxxxx_yk.doucat.BaseActivity
+import com.blankj.utilcode.util.LogUtils
+import com.xxxxxx_yk.doucat.views.BaseActivity
 import com.xxxxxx_yk.doucat.R
+import com.xxxxxx_yk.doucat.interfaces.GetHomeCateListListener
+import com.xxxxxx_yk.doucat.model.HomeCateList
+import com.xxxxxx_yk.doucat.presenter.GetHomeCateListPresenter
 import com.xxxxxx_yk.doucat.ui.ViewToKotlin.bottomNavigationView
 import com.xxxxxx_yk.doucat.utils.ViewID
 import com.xxxxxx_yk.doucat.views.impl.*
 import org.jetbrains.anko.*
 
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity() , GetHomeCateListListener {
 
     var bnv_btn: BottomNavigationView? = null
     var home_fragment : HomeFragment = HomeFragment()
@@ -80,6 +83,14 @@ class MainActivity : BaseActivity() {
 
     override fun otherClick(v: View?) {
 
+    }
+
+    override fun showHomeCateListSuccess(homeCateList: HomeCateList) {
+        LogUtils.e(homeCateList)
+    }
+
+    override fun showHomeCateListError(t: Throwable) {
+        t.printStackTrace()
     }
 
 }

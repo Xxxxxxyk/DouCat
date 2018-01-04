@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.xxxxxx_yk.doucat">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".application.MyApp"
         android:allowBackup="true"

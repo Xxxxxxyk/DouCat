@@ -18,5 +18,7 @@ class ViewID {
         val VIEW_PAGER = 4
         val INDICATOR = 5
         val LOGIN_BUTTON = 6
+        val NEW_HISTORY_IMAGE = 7
+        val TAB_TEXT = 8
     }
 }

@@ -3,7 +3,7 @@ package com.xxxxxx_yk.doucat.views.home
 import android.os.Handler
 import android.view.View
 import com.blankj.utilcode.util.SPUtils
-import com.xxxxxx_yk.doucat.BaseActivity
+import com.xxxxxx_yk.doucat.views.BaseActivity
 import com.xxxxxx_yk.doucat.R
 import com.xxxxxx_yk.doucat.utils.Constant
 import org.jetbrains.anko.backgroundResource
@@ -39,6 +39,7 @@ class SplashActivity : BaseActivity() {
             finish()
         }, 5000)
     }
+
 
     override fun otherClick(v: View?) {
     }

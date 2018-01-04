@@ -5,6 +5,9 @@ package com.xxxxxx_yk.doucat.utils
  */
 interface Constant {
     companion object {
+
+        val BASE_URL = "http://www.douyu.com/"
+
         val IS_AGAIN_COME: String = "is_again_come"
 
         val TITLE : Array<String> = arrayOf("推荐","手游","娱乐")
