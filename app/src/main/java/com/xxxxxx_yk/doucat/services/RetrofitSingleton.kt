@@ -1,6 +1,9 @@
 package com.xxxxxx_yk.doucat.services
 
+import android.app.Application
 import android.text.TextUtils
+import com.blankj.utilcode.util.SPUtils
+import com.blankj.utilcode.util.Utils
 import com.xxxxxx_yk.doucat.BuildConfig
 import com.xxxxxx_yk.doucat.utils.Constant
 import okhttp3.Interceptor
@@ -11,6 +14,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.xxxxxx_yk.doucat.application.MyApp
+
 
 /**
  * Created by 华农天时-Qiuzi on 2017/10/16.
@@ -33,6 +41,7 @@ class RetrofitSingleton private constructor() {
                 .readTimeout(8, TimeUnit.SECONDS)
                 .writeTimeout(8, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
+                .cookieJar(PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(Utils.getApp())))
 
         //Debug模式下Log打印输出
         if (BuildConfig.DEBUG) {
@@ -43,7 +52,8 @@ class RetrofitSingleton private constructor() {
         }
 
         var interceptor = { chain: Interceptor.Chain ->
-            var request = chain.request().newBuilder().build()
+            var request = chain.request().newBuilder()
+                    .build()
             chain.proceed(request)
         }
 

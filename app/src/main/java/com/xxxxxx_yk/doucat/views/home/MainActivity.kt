@@ -50,26 +50,25 @@ class MainActivity : BaseActivity() , GetHomeCateListListener {
 
     override fun initListeren() {
         bnv_btn!!.setOnNavigationItemSelectedListener { item: MenuItem ->
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
             when (item.itemId) {
                 R.id.dc_home -> {
-                    FragmentUtils.replace(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT)
+                    FragmentUtils.replace(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT,true)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_live -> {
-                    FragmentUtils.replace(supportFragmentManager,live_fragment,ViewID.FL_FRAGMENT)
+                    FragmentUtils.replace(supportFragmentManager,live_fragment,ViewID.FL_FRAGMENT,true)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_video -> {
-                    FragmentUtils.replace(supportFragmentManager,video_fragment,ViewID.FL_FRAGMENT)
+                    FragmentUtils.replace(supportFragmentManager,video_fragment,ViewID.FL_FRAGMENT,true)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_follow -> {
-                    FragmentUtils.replace(supportFragmentManager,follow_fragment,ViewID.FL_FRAGMENT)
+                    FragmentUtils.replace(supportFragmentManager,follow_fragment,ViewID.FL_FRAGMENT,true)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_user -> {
-                    FragmentUtils.replace(supportFragmentManager,user_fragment,ViewID.FL_FRAGMENT)
+                    FragmentUtils.replace(supportFragmentManager,user_fragment,ViewID.FL_FRAGMENT,true)
                     return@setOnNavigationItemSelectedListener true
                 }
             }

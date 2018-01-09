@@ -45,6 +45,5 @@ class VideoFragment : BaseFragment() {
                 }
             }
         }.view
-        isPrepared = true
     }
 }

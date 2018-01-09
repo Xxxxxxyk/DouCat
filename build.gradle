@@ -10,9 +10,12 @@ buildscript {
     ext.okio_version = '1.13.0'
     ext.scalars_version = '2.1.0'
     ext.logging_version = '3.4.1'
+    ext.glide_version = '4.4.0'
     repositories {
+        maven { url "https://dl.google.com/dl/android/maven2/"}
         maven { url 'https://maven.google.com' }
         jcenter()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -29,6 +32,7 @@ allprojects {
         maven { url 'https://maven.google.com' }
         mavenCentral()
         maven { url "https://jitpack.io" }
+        google()
     }
 }
 

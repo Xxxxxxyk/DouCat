@@ -17,7 +17,6 @@ class HomeAdapter(fm : FragmentManager? ,var list : List<Fragment> , var title :
     }
 
     override fun getCount(): Int {
-        LogUtils.e("shuliangshi${list.size}")
         return  list.size
     }
 

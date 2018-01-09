@@ -44,6 +44,5 @@ class LiveFragment : BaseFragment() {
                 }
             }
         }.view
-        isPrepared = true
     }
 }

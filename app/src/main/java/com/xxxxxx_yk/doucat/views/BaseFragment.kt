@@ -16,7 +16,7 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
 
     private var isCanSee: Boolean = false
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initListeren()
         lazyLoad()
         return createView()

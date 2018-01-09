@@ -10,10 +10,6 @@ interface Constant {
 
         val IS_AGAIN_COME: String = "is_again_come"
 
-        val TITLE : Array<String> = arrayOf("推荐","手游","娱乐")
-
-        fun printHelloWorld(){
-            print("helloword")
-        }
+        val HOME_CATE_LIST = "homecatelist"
     }
 }

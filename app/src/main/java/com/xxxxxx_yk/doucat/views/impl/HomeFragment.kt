@@ -1,5 +1,6 @@
 package com.xxxxxx_yk.doucat.views.impl
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.View
@@ -9,6 +10,7 @@ import com.xxxxxx_yk.doucat.interfaces.GetHomeCateListListener
 import com.xxxxxx_yk.doucat.model.HomeCateList
 import com.xxxxxx_yk.doucat.presenter.GetHomeCateListPresenter
 import com.xxxxxx_yk.doucat.ui.ViewToKotlin.slidingIconTabLayout
+import com.xxxxxx_yk.doucat.utils.Constant
 import com.xxxxxx_yk.doucat.utils.ViewID
 import com.xxxxxx_yk.doucat.views.BaseFragment
 import com.xxxxxx_yk.doucat.views.adapter.HomeAdapter
@@ -41,16 +43,9 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
 //            return
 //        }
 
-        var getHomeCateListPresenter = GetHomeCateListPresenter()
-        getHomeCateListPresenter.addListener(this)
+        var getHomeCateListPresenter = GetHomeCateListPresenter(this)
         getHomeCateListPresenter.loadDate()
-
-        list!!.clear()
-        list!!.add(Home1Fragment())
-        list!!.add(Home2Fragment())
-        list!!.add(Home3Fragment())
-        list!!.add(Home4Fragment())
-        list!!.add(Home5Fragment())
+        list.clear()
 
         mHasLoadedOnce = true
     }
@@ -68,12 +63,42 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
 
         titleList.add(0, "推荐")
 
+        //TODO 不完美,应可以优化,时间不够,标记
+
+        var home2 = Home2Fragment()
+        var home2_bundle = Bundle()
+        home2_bundle.putSerializable(Constant.HOME_CATE_LIST, homeCateList.data.get(0))
+        home2.arguments = home2_bundle
+
+        var home3 = Home3Fragment()
+        var home3_bundle = Bundle()
+        home3_bundle.putSerializable(Constant.HOME_CATE_LIST, homeCateList.data.get(1))
+        home3.arguments = home3_bundle
+
+        var home4 = Home4Fragment()
+        var home4_bundle = Bundle()
+        home4_bundle.putSerializable(Constant.HOME_CATE_LIST, homeCateList.data.get(2))
+        home4.arguments = home4_bundle
+
+        var home5 = Home5Fragment()
+        var home5_bundle = Bundle()
+        home5_bundle.putSerializable(Constant.HOME_CATE_LIST, homeCateList.data.get(3))
+        home5.arguments = home5_bundle
+
+
+        list.add(Home1Fragment())
+        list.add(home2)
+        list.add(home3)
+        list.add(home4)
+        list.add(home5)
+
         homeAdapter.notifyDataSetChanged()
         indicator!!.setViewPager(vp)
     }
 
     override fun showHomeCateListError(t: Throwable) {
         list.clear()
+        t.printStackTrace()
     }
 
 

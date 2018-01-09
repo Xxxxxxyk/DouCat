@@ -47,6 +47,5 @@ class FollowFragment : BaseFragment() {
                 }
             }
         }.view
-        isPrepared = true
     }
 }

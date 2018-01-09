@@ -240,6 +240,5 @@ class UserFragment : BaseFragment() {
                 }
             }
         }.view
-        isPrepared = true
     }
 }

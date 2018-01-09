@@ -11,22 +11,22 @@ import android.widget.ImageView
  */
 class WelcomeAdapter(val context : Context , val list : IntArray) : PagerAdapter() {
 
-    override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
+    override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
     }
 
     override fun getCount(): Int {
-        return if(list == null) 0 else list.size
+        return list.size
     }
 
-    override fun instantiateItem(container: ViewGroup?, position: Int): Any {
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
         var image = ImageView(context)
         image.setImageResource(list[position])
-        container?.addView(image)
+        container.addView(image)
         return image
     }
 
-    override fun destroyItem(container: ViewGroup?, position: Int, `object`: Any?) {
-        container?.removeView(`object` as View?)
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        container.removeView(`object` as View?)
     }
 }

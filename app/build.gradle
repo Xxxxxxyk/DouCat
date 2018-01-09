@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.xxxxxx_yk.doucat"
         minSdkVersion 21
@@ -28,8 +28,9 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'com.android.support:appcompat-v7:25.3.1'
-    implementation 'com.android.support:design:25.+'
+
+    implementation 'com.android.support:appcompat-v7:27+'
+    implementation 'com.android.support:design:27.+'
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -53,5 +54,10 @@ dependencies {
     implementation 'com.github.kimkevin:slidingicontablayout:1.0.0'
 
     implementation "com.blankj:utilcode:$utils_version"
+
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
 }
