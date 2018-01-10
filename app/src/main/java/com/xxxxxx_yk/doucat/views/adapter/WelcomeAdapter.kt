@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 
 /**
- * Created by 华农天时-Qiuzi on 2017/9/20.
+ * Created by 惜梦哥哥_ on 2017/9/20.
  */
 class WelcomeAdapter(val context : Context , val list : IntArray) : PagerAdapter() {
 

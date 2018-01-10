@@ -4,7 +4,7 @@ import android.app.Application
 import com.blankj.utilcode.util.Utils
 
 /**
- * Created by 华农天时-Qiuzi on 2017/9/18.
+ * Created by 惜梦哥哥_ on 2017/9/18.
  */
 class MyApp : Application() {
 

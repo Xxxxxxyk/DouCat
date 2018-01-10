@@ -3,7 +3,7 @@ package com.xxxxxx_yk.doucat.interfaces
 import android.view.View
 
 /**
- * Created by 华农天时-Qiuzi on 2017/9/20.
+ * Created by 惜梦哥哥_ on 2017/9/20.
  */
 interface IBaseView {
     /**

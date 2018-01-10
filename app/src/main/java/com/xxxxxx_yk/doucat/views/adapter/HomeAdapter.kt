@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.blankj.utilcode.util.LogUtils
 
 /**
- * Created by 华农天时-Qiuzi on 2017/10/16.
+ * Created by 惜梦哥哥_ on 2017/10/16.
  */
 class HomeAdapter(fm : FragmentManager? ,var list : List<Fragment> , var title : List<String>) : FragmentPagerAdapter(fm){
 

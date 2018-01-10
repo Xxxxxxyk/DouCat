@@ -13,7 +13,7 @@ import org.jetbrains.anko.support.v4.UI
 import org.jetbrains.anko.textView
 
 /**
- * Created by 华农天时-Qiuzi on 2017/10/16.
+ * Created by 惜梦哥哥_ on 2017/10/16.
  */
 class Home5Fragment : BaseFragment(), GetOtherHomeCateListener {
 

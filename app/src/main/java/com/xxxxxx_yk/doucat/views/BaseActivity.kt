@@ -7,7 +7,7 @@ import com.xxxxxx_yk.doucat.R
 import com.xxxxxx_yk.doucat.interfaces.IBaseView
 
 /**
- * Created by 华农天时-Qiuzi on 2017/9/20.
+ * Created by 惜梦哥哥_ on 2017/9/20.
  */
 abstract class BaseActivity : AppCompatActivity(),View.OnClickListener, IBaseView {
     override fun onCreate(savedInstanceState: Bundle?) {

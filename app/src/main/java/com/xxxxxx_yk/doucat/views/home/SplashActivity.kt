@@ -11,7 +11,7 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.verticalLayout
 
 /**
- * Created by 华农天时-Qiuzi on 2017/9/20.
+ * Created by 惜梦哥哥_ on 2017/9/20.
  */
 
 class SplashActivity : BaseActivity() {

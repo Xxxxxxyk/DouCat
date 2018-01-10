@@ -13,7 +13,7 @@ import org.jetbrains.anko.textView
 
 
 /**
- * Created by 华农天时-Qiuzi on 2017/9/25.
+ * Created by 惜梦哥哥_ on 2017/9/25.
  */
 class LiveFragment : BaseFragment() {
 

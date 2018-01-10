@@ -1,7 +1,7 @@
 package com.xxxxxx_yk.doucat.utils
 
 /**
- * Created by 华农天时-Qiuzi on 2017/9/20.
+ * Created by 惜梦哥哥_ on 2017/9/20.
  */
 interface Constant {
     companion object {

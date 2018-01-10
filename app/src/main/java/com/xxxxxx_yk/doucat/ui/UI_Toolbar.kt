@@ -13,7 +13,7 @@ import com.xxxxxx_yk.doucat.utils.ViewID
 import org.jetbrains.anko.*
 
 /**
- * Created by 华农天时-Qiuzi on 2017/10/16.
+ * Created by 惜梦哥哥_ on 2017/10/16.
  */
 //用internal object 标识,即可在全局中引用布局
 internal object UI_Toolbar {

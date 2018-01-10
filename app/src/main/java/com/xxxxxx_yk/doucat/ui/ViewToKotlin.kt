@@ -6,7 +6,7 @@ import com.github.kimkevin.slidingicontablayout.wigets.SlidingIconTabLayout
 import org.jetbrains.anko.custom.ankoView
 
 /**
- * Created by 华农天时-Qiuzi on 2017/10/16.
+ * Created by 惜梦哥哥_ on 2017/10/16.
  */
 
 internal object ViewToKotlin {

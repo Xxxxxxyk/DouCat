@@ -1,9 +1,9 @@
 package com.xxxxxx_yk.doucat.services
 
-import android.app.Application
-import android.text.TextUtils
-import com.blankj.utilcode.util.SPUtils
 import com.blankj.utilcode.util.Utils
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.xxxxxx_yk.doucat.BuildConfig
 import com.xxxxxx_yk.doucat.utils.Constant
 import okhttp3.Interceptor
@@ -12,16 +12,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.Exception
 import java.util.concurrent.TimeUnit
-import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
-import com.franmontiel.persistentcookiejar.cache.SetCookieCache
-import com.franmontiel.persistentcookiejar.PersistentCookieJar
-import com.xxxxxx_yk.doucat.application.MyApp
 
 
 /**
- * Created by 华农天时-Qiuzi on 2017/10/16.
+ * Created by 惜梦哥哥_ on 2017/10/16.
  */
 class RetrofitSingleton private constructor() {
 

@@ -21,7 +21,7 @@ import org.jetbrains.anko.support.v4.viewPager
 import org.jetbrains.anko.verticalLayout
 
 /**
- * Created by 华农天时-Qiuzi on 2017/9/25.
+ * Created by 惜梦哥哥_ on 2017/9/25.
  */
 class HomeFragment : BaseFragment(), GetHomeCateListListener {
 
