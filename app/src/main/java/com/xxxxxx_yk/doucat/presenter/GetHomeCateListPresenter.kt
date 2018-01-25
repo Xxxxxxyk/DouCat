@@ -6,7 +6,6 @@ import com.xxxxxx_yk.doucat.interfaces.GetHomeCateListListener
 import com.xxxxxx_yk.doucat.model.HomeCateList
 import com.xxxxxx_yk.doucat.services.RetrofitSingleton
 import com.xxxxxx_yk.doucat.utils.BaseParams
-import com.xxxxxx_yk.doucat.utils.Constant
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers

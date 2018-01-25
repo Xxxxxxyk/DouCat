@@ -7,13 +7,12 @@ import android.view.MenuItem
 import android.view.View
 import com.blankj.utilcode.util.FragmentUtils
 import com.blankj.utilcode.util.LogUtils
-import com.xxxxxx_yk.doucat.views.BaseActivity
 import com.xxxxxx_yk.doucat.R
 import com.xxxxxx_yk.doucat.interfaces.GetHomeCateListListener
 import com.xxxxxx_yk.doucat.model.HomeCateList
-import com.xxxxxx_yk.doucat.presenter.GetHomeCateListPresenter
 import com.xxxxxx_yk.doucat.ui.ViewToKotlin.bottomNavigationView
 import com.xxxxxx_yk.doucat.utils.ViewID
+import com.xxxxxx_yk.doucat.views.BaseActivity
 import com.xxxxxx_yk.doucat.views.impl.*
 import org.jetbrains.anko.*
 
@@ -52,23 +51,23 @@ class MainActivity : BaseActivity() , GetHomeCateListListener {
         bnv_btn!!.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.dc_home -> {
-                    FragmentUtils.replace(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT,true)
+                    FragmentUtils.replace(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_live -> {
-                    FragmentUtils.replace(supportFragmentManager,live_fragment,ViewID.FL_FRAGMENT,true)
+                    FragmentUtils.replace(supportFragmentManager,live_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_video -> {
-                    FragmentUtils.replace(supportFragmentManager,video_fragment,ViewID.FL_FRAGMENT,true)
+                    FragmentUtils.replace(supportFragmentManager,video_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_follow -> {
-                    FragmentUtils.replace(supportFragmentManager,follow_fragment,ViewID.FL_FRAGMENT,true)
+                    FragmentUtils.replace(supportFragmentManager,follow_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_user -> {
-                    FragmentUtils.replace(supportFragmentManager,user_fragment,ViewID.FL_FRAGMENT,true)
+                    FragmentUtils.replace(supportFragmentManager,user_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
             }

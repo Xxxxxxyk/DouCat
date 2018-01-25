@@ -1,10 +1,6 @@
 package com.xxxxxx_yk.doucat.views.impl
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.xxxxxx_yk.doucat.views.BaseFragment
 import org.jetbrains.anko.centerInParent
 import org.jetbrains.anko.relativeLayout

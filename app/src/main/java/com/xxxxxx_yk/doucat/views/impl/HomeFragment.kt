@@ -101,6 +101,11 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
         t.printStackTrace()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        homeAdapter.notifyDataSetChanged()
+    }
+
 
     override fun createView(): View {
         return UI {
@@ -115,7 +120,6 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
                     adapter = homeAdapter
                 }.lparams(width = matchParent, height = matchParent)
             }
-
         }.view
     }
 }

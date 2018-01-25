@@ -4,8 +4,8 @@ import android.graphics.Color
 import android.support.v4.view.ViewPager
 import android.view.View
 import android.widget.Button
-import com.xxxxxx_yk.doucat.views.BaseActivity
 import com.xxxxxx_yk.doucat.R
+import com.xxxxxx_yk.doucat.views.BaseActivity
 import com.xxxxxx_yk.doucat.views.adapter.WelcomeAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -22,7 +22,7 @@ class WelcomeActivity : BaseActivity() {
 
     override fun initView() {
         relativeLayout {
-            padding = dip(5)
+            padding = 10
             vp_guide = viewPager {
                 adapter = WelcomeAdapter(this@WelcomeActivity, WELCOME_RES)
 
@@ -31,16 +31,16 @@ class WelcomeActivity : BaseActivity() {
             btn_open = button {
                 text = "开启全新体验"
                 backgroundResource = R.drawable.blue_btn_selector
-                textSize = px2sp(50)
+                textSize = 14f
                 textColor = Color.WHITE
                 visibility = View.GONE
                 onClick {
                     startActivity<MainActivity>()
                     finish()
                 }
-            }.lparams(width = 500 , height = 150) {
+            }.lparams(width = dip(120) , height = dip(40)) {
                 alignParentBottom()
-                bottomMargin = 100
+                bottomMargin = dip(50)
                 centerHorizontally()
             }
         }
