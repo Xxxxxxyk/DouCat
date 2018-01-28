@@ -24,14 +24,14 @@ internal object UI_Toolbar {
             title = ""
             backgroundResource = R.color.colorPrimary
             relativeLayout {
-                imageView ( R.mipmap.logo_icon).lparams(width = 200 , height = 120)
+                imageView ( R.mipmap.logo_icon).lparams(width = dip(70) , height = dip(40))
                 linearLayout {
                     orientation = LinearLayout.HORIZONTAL
                     gravity = Gravity.CENTER_VERTICAL
-                    imageView (R.drawable.img_message){ isClickable = true }.lparams(width = 60, height = 60) { rightMargin = 35 }
-                    imageView (R.drawable.img_history) { isClickable = true }.lparams(width = 60, height = 60) { rightMargin = 35 }
-                    imageView (R.drawable.img_scanner){ isClickable = true }.lparams(width = 60, height = 60) { rightMargin = 35 }
-                    imageView (R.drawable.img_search){ isClickable = true }.lparams(width = 60, height = 60) { rightMargin = 35 }
+                    imageView (R.drawable.img_message){ isClickable = true }.lparams(width = dip(25), height =  dip(25)) { rightMargin = dip(10) }
+                    imageView (R.drawable.img_history) { isClickable = true }.lparams(width = dip(25), height =  dip(25)) { rightMargin = dip(10) }
+                    imageView (R.drawable.img_scanner){ isClickable = true }.lparams(width = dip(25), height =  dip(25)) { rightMargin = dip(10) }
+                    imageView (R.drawable.img_search){ isClickable = true }.lparams(width = dip(25), height = dip(25)) { rightMargin = dip(10) }
                 }.lparams(height = wrapContent , width = wrapContent) {
                     alignParentRight()
                     centerVertically()

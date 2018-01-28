@@ -21,7 +21,7 @@ class WelcomeAdapter(val context : Context , val list : IntArray) : PagerAdapter
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         var image = ImageView(context)
-        image.setImageResource(list[position])
+        image.setBackgroundResource(list[position])
         container.addView(image)
         return image
     }

@@ -1,5 +1,6 @@
 package com.xxxxxx_yk.doucat.interfaces
 
+import com.xxxxxx_yk.doucat.model.HomeBanners
 import com.xxxxxx_yk.doucat.model.HomeCateList
 import com.xxxxxx_yk.doucat.model.HomeOtherCate
 import io.reactivex.Observable
@@ -16,5 +17,8 @@ interface APIDoc {
 
     @GET("/api/homeCate/getHotRoom")
     fun getOtherHomeCate(@QueryMap params: Map<String, String>) : Observable<HomeOtherCate>
+
+    @GET("/api/v1/slide/6")
+    fun getHomeBanners(@QueryMap params: Map<String, String>) : Observable<HomeBanners>
 
 }

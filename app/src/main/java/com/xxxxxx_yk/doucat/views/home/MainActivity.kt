@@ -10,11 +10,11 @@ import com.blankj.utilcode.util.LogUtils
 import com.xxxxxx_yk.doucat.R
 import com.xxxxxx_yk.doucat.interfaces.GetHomeCateListListener
 import com.xxxxxx_yk.doucat.model.HomeCateList
-import com.xxxxxx_yk.doucat.ui.ViewToKotlin.bottomNavigationView
 import com.xxxxxx_yk.doucat.utils.ViewID
 import com.xxxxxx_yk.doucat.views.BaseActivity
 import com.xxxxxx_yk.doucat.views.impl.*
 import org.jetbrains.anko.*
+import org.jetbrains.anko.design.bottomNavigationView
 
 
 class MainActivity : BaseActivity() , GetHomeCateListListener {

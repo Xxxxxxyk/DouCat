@@ -25,14 +25,6 @@ class GetOtherHomeCatePresenter(listener: GetOtherHomeCateListener , identificat
                 .getOtherHomeCate(ParamsUtils.getHomeCate(id))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Consumer<HomeOtherCate> {
-                    override fun accept(homeOtherCate: HomeOtherCate) {
-                        listen.getOtherHomeCateSuccess(homeOtherCate)
-                    }
-                },object : Consumer<Throwable>{
-                    override fun accept(t: Throwable) {
-                        listen.getOtherHomeCateError(t)
-                    }
-                })
+                .subscribe(Consumer<HomeOtherCate> { homeOtherCate -> listen.getOtherHomeCateSuccess(homeOtherCate) }, Consumer<Throwable> { t -> listen.getOtherHomeCateError(t) })
     }
 }

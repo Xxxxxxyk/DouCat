@@ -20,5 +20,6 @@ class ViewID {
         val LOGIN_BUTTON = 6
         val NEW_HISTORY_IMAGE = 7
         val TAB_TEXT = 8
+        val BANNER = 9
     }
 }

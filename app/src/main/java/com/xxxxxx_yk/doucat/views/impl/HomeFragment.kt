@@ -19,6 +19,7 @@ import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.support.v4.UI
 import org.jetbrains.anko.support.v4.viewPager
 import org.jetbrains.anko.verticalLayout
+import org.jetbrains.anko.wrapContent
 
 /**
  * Created by 惜梦哥哥_ on 2017/9/25.
@@ -113,7 +114,7 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
                 indicator = slidingIconTabLayout {
                     setCustomTabView(R.layout.tab_txt_layout, R.id.tab_name_txt)
                     setCustomTabColorizer(SlidingIconTabLayout.TabColorizer { return@TabColorizer resources.getColor(R.color.title_color) })
-                }.lparams(height = 120, width = matchParent)
+                }.lparams(height = wrapContent, width = matchParent)
                 vp = viewPager {
                     id = ViewID.VIEW_PAGER
                     homeAdapter = HomeAdapter(childFragmentManager, list, titleList)
