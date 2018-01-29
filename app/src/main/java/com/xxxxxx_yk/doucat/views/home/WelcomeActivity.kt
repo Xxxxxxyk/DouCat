@@ -46,7 +46,7 @@ class WelcomeActivity : BaseActivity() {
         }
     }
 
-    override fun initListeren() {
+    override fun initListerenAndAdapter() {
         vp_guide!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }

@@ -26,42 +26,30 @@ import org.jetbrains.anko.wrapContent
  */
 class HomeFragment : BaseFragment(), GetHomeCateListListener {
 
-    var isPrepared: Boolean = false
-    var mHasLoadedOnce: Boolean = false
-    var list: ArrayList<Fragment> = ArrayList<Fragment>()
-    var vp: ViewPager? = null
-    var indicator: SlidingIconTabLayout? = null
-    var titleList: ArrayList<String> = ArrayList()
-    lateinit var homeAdapter: HomeAdapter
+    private var list: ArrayList<Fragment> = ArrayList<Fragment>()
+    private var vp: ViewPager? = null
+    private var indicator: SlidingIconTabLayout? = null
+    private var titleList: ArrayList<String> = ArrayList()
+    private lateinit var homeAdapter: HomeAdapter
 
-    override fun initListeren() {
-        isPrepared = true
+    override fun initListerenAndAdapter() {
+        homeAdapter = HomeAdapter(childFragmentManager, list, titleList)
     }
 
     override fun initData() {
-
-//        if (!isPrepared || !isVisible || mHasLoadedOnce) {
-//            return
-//        }
-
         var getHomeCateListPresenter = GetHomeCateListPresenter(this)
         getHomeCateListPresenter.loadDate()
         list.clear()
-
-        mHasLoadedOnce = true
     }
 
     override fun otherClick(v: View?) {
     }
 
     override fun showHomeCateListSuccess(homeCateList: HomeCateList) {
-
         titleList.clear()
-
         for (it in homeCateList.data) {
             titleList.add(it.title)
         }
-
         titleList.add(0, "推荐")
 
         //TODO 不完美,应可以优化,时间不够,标记
@@ -93,13 +81,9 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
         list.add(home4)
         list.add(home5)
 
-        homeAdapter.notifyDataSetChanged()
+        vp!!.adapter = homeAdapter
         indicator!!.setViewPager(vp)
-    }
-
-    override fun showHomeCateListError(t: Throwable) {
-        list.clear()
-        t.printStackTrace()
+        homeAdapter.notifyDataSetChanged()
     }
 
     override fun onDestroy() {
@@ -107,6 +91,10 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
         homeAdapter.notifyDataSetChanged()
     }
 
+    override fun showHomeCateListError(t: Throwable) {
+        list.clear()
+        t.printStackTrace()
+    }
 
     override fun createView(): View {
         return UI {
@@ -117,8 +105,8 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
                 }.lparams(height = wrapContent, width = matchParent)
                 vp = viewPager {
                     id = ViewID.VIEW_PAGER
-                    homeAdapter = HomeAdapter(childFragmentManager, list, titleList)
-                    adapter = homeAdapter
+//                    homeAdapter = HomeAdapter(childFragmentManager, list, titleList)
+//                    adapter = homeAdapter
                 }.lparams(width = matchParent, height = matchParent)
             }
         }.view

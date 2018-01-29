@@ -2,10 +2,10 @@ package com.xxxxxx_yk.doucat.utils
 
 import android.content.Context
 import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.youth.banner.loader.ImageLoader
 import com.bumptech.glide.request.RequestOptions
 import com.xxxxxx_yk.doucat.R
+import com.xxxxxx_yk.doucat.application.GlideApp
+import com.youth.banner.loader.ImageLoader
 
 
 /**
@@ -13,9 +13,10 @@ import com.xxxxxx_yk.doucat.R
  */
 class GlideImageLoader : ImageLoader() {
     override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
-        Glide.with(context)
+        GlideApp.with(context)
                 .load(path)
-                .apply(RequestOptions().placeholder(R.mipmap.image_banner_loading).centerCrop())
+                .placeholder(R.mipmap.image_banner_loading)
+                .fitCenter()
                 .into(imageView);
     }
 }

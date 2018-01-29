@@ -12,9 +12,9 @@ interface IBaseView {
     fun initView()
 
     /**
-     * 监听器
+     * 监听器和适配器
      */
-    fun initListeren()
+    fun initListerenAndAdapter()
 
     /**
      * 初始化数据

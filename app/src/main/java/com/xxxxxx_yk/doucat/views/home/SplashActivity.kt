@@ -24,7 +24,7 @@ class SplashActivity : BaseActivity() {
         }
     }
 
-    override fun initListeren() {
+    override fun initListerenAndAdapter() {
 
     }
 

@@ -3,6 +3,7 @@ package com.xxxxxx_yk.doucat.views.home
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
 import android.view.MenuItem
 import android.view.View
 import com.blankj.utilcode.util.FragmentUtils
@@ -19,12 +20,13 @@ import org.jetbrains.anko.design.bottomNavigationView
 
 class MainActivity : BaseActivity() , GetHomeCateListListener {
 
-    var bnv_btn: BottomNavigationView? = null
-    var home_fragment : HomeFragment = HomeFragment()
-    var live_fragment : LiveFragment = LiveFragment()
-    var video_fragment : VideoFragment = VideoFragment()
-    var follow_fragment : FollowFragment = FollowFragment()
-    var user_fragment : UserFragment = UserFragment()
+    private var bnv_btn: BottomNavigationView? = null
+    private var home_fragment : HomeFragment = HomeFragment()
+    private var live_fragment : LiveFragment = LiveFragment()
+    private var video_fragment : VideoFragment = VideoFragment()
+    private var follow_fragment : FollowFragment = FollowFragment()
+    private var user_fragment : UserFragment = UserFragment()
+    private lateinit var current_fragment : Fragment
 
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -47,27 +49,32 @@ class MainActivity : BaseActivity() , GetHomeCateListListener {
     }
 
 
-    override fun initListeren() {
+    override fun initListerenAndAdapter() {
         bnv_btn!!.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.dc_home -> {
-                    FragmentUtils.replace(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT,false)
+                    switchFragment(home_fragment)
+//                    FragmentUtils.replace(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_live -> {
-                    FragmentUtils.replace(supportFragmentManager,live_fragment,ViewID.FL_FRAGMENT,false)
+                    switchFragment(live_fragment)
+//                    FragmentUtils.replace(supportFragmentManager,live_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_video -> {
-                    FragmentUtils.replace(supportFragmentManager,video_fragment,ViewID.FL_FRAGMENT,false)
+                    switchFragment(video_fragment)
+//                    FragmentUtils.replace(supportFragmentManager,video_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_follow -> {
-                    FragmentUtils.replace(supportFragmentManager,follow_fragment,ViewID.FL_FRAGMENT,false)
+                    switchFragment(follow_fragment)
+//                    FragmentUtils.replace(supportFragmentManager,follow_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.dc_user -> {
-                    FragmentUtils.replace(supportFragmentManager,user_fragment,ViewID.FL_FRAGMENT,false)
+                    switchFragment(user_fragment)
+//                    FragmentUtils.replace(supportFragmentManager,user_fragment,ViewID.FL_FRAGMENT,false)
                     return@setOnNavigationItemSelectedListener true
                 }
             }
@@ -77,6 +84,7 @@ class MainActivity : BaseActivity() , GetHomeCateListListener {
 
     override fun initData() {
         FragmentUtils.add(supportFragmentManager,home_fragment,ViewID.FL_FRAGMENT)
+        current_fragment = home_fragment
     }
 
     override fun otherClick(v: View?) {
@@ -91,4 +99,14 @@ class MainActivity : BaseActivity() , GetHomeCateListListener {
         t.printStackTrace()
     }
 
+    fun switchFragment(fragment: Fragment){
+        if(!fragment.isAdded){
+            FragmentUtils.hide(current_fragment)
+            FragmentUtils.add(supportFragmentManager,fragment,ViewID.FL_FRAGMENT,false)
+        }else{
+            FragmentUtils.hide(current_fragment)
+            FragmentUtils.show(fragment)
+        }
+        current_fragment = fragment
+    }
 }

@@ -12,7 +12,7 @@ abstract class BaseActivity : AppCompatActivity(),View.OnClickListener, IBaseVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
-        initListeren()
+        initListerenAndAdapter()
         initData()
     }
 

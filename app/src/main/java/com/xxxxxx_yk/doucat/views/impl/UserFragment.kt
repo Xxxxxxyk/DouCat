@@ -18,7 +18,7 @@ class UserFragment : BaseFragment() {
     var isPrepared: Boolean = false
     var mHasLoadedOnce: Boolean = false
 
-    override fun initListeren() {
+    override fun initListerenAndAdapter() {
     }
 
     override fun initData() {

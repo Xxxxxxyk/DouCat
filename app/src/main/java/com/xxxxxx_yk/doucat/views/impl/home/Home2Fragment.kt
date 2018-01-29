@@ -21,7 +21,7 @@ class Home2Fragment : BaseFragment(), GetOtherHomeCateListener {
     private lateinit var mHomeOhterCate : HomeOtherCate
     private lateinit var tvNeirong : TextView
 
-    override fun initListeren() {
+    override fun initListerenAndAdapter() {
     }
 
     override fun initData() {

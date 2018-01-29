@@ -17,9 +17,10 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
     private var isCanSee: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        initListeren()
+        var view = createView()
+        initListerenAndAdapter()
         lazyLoad()
-        return createView()
+        return view
     }
 
     override fun initView() {
@@ -61,7 +62,7 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
      * 可见
      */
     protected fun onVisible() {
-        lazyLoad();
+//        lazyLoad();
     }
 
 
