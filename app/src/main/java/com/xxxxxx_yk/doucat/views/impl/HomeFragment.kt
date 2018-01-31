@@ -105,6 +105,7 @@ class HomeFragment : BaseFragment(), GetHomeCateListListener {
                 }.lparams(height = wrapContent, width = matchParent)
                 vp = viewPager {
                     id = ViewID.VIEW_PAGER
+                    offscreenPageLimit = 5
 //                    homeAdapter = HomeAdapter(childFragmentManager, list, titleList)
 //                    adapter = homeAdapter
                 }.lparams(width = matchParent, height = matchParent)
