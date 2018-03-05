@@ -5,6 +5,8 @@ import android.view.View
 import com.blankj.utilcode.util.LogUtils
 import com.xxxxxx_yk.doucat.ui.ViewToKotlin.videoPlayerView
 import com.xxxxxx_yk.doucat.views.BaseActivity
+import io.vov.vitamio.widget.MediaController
+import io.vov.vitamio.widget.VideoView
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.relativeLayout
 
@@ -14,7 +16,7 @@ import org.jetbrains.anko.relativeLayout
  */
 class VideoPlayerActivity : BaseActivity() {
 
-    lateinit var videoPlayer : VideoView
+    lateinit var videoPlayer: VideoView
 
     override fun initView() {
         relativeLayout {
