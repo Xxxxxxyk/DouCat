@@ -3,6 +3,7 @@ package com.xxxxxx_yk.doucat.ui;
 import android.view.ViewManager
 import com.github.kimkevin.slidingicontablayout.wigets.SlidingIconTabLayout
 import com.youth.banner.Banner
+import io.vov.vitamio.widget.VideoView
 import org.jetbrains.anko.custom.ankoView
 
 /**
