@@ -36,4 +36,10 @@ class HotBanner(list : List<*>) {
     fun start(){
         banner.start()
     }
+
+    fun setOnBannerListener(onBannerListener : () -> Unit){
+        banner.setOnBannerListener{
+            onBannerListener()
+        }
+    }
 }

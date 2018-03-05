@@ -1,5 +1,6 @@
 package com.xxxxxx_yk.doucat.interfaces
 
+import com.xxxxxx_yk.doucat.model.BestHot
 import com.xxxxxx_yk.doucat.model.HomeBanners
 import com.xxxxxx_yk.doucat.model.HomeCateList
 import com.xxxxxx_yk.doucat.model.HomeOtherCate
@@ -20,5 +21,8 @@ interface APIDoc {
 
     @GET("/api/v1/slide/6")
     fun getHomeBanners(@QueryMap params: Map<String, String>) : Observable<HomeBanners>
+
+    @GET("/api/v1/getbigDataRoom")
+    fun getBestHot(@QueryMap params: Map<String, String>) : Observable<BestHot>
 
 }

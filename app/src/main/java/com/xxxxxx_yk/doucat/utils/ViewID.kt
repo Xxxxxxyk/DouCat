@@ -21,5 +21,6 @@ class ViewID {
         val NEW_HISTORY_IMAGE = 7
         val TAB_TEXT = 8
         val BANNER = 9
+        val VIDEO_PLAYER = 10
     }
 }

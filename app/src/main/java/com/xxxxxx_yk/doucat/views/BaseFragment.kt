@@ -17,10 +17,15 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
     private var isCanSee: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = createView()
+        var view  = createView()
         initListerenAndAdapter()
         lazyLoad()
         return view
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
     }
 
     override fun initView() {
