@@ -1,5 +1,7 @@
 package com.xxxxxx_yk.doucat.views.impl.home
 
+import android.content.Intent
+import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -15,6 +17,7 @@ import com.xxxxxx_yk.doucat.model.HomeBanners
 import com.xxxxxx_yk.doucat.presenter.GetBestHotPresenter
 import com.xxxxxx_yk.doucat.presenter.GetHomeBannerPresenter
 import com.xxxxxx_yk.doucat.ui.HotBanner
+import com.xxxxxx_yk.doucat.utils.Constant
 import com.xxxxxx_yk.doucat.views.BaseFragment
 import com.xxxxxx_yk.doucat.views.adapter.HomeHotAdapter
 import com.xxxxxx_yk.doucat.views.video.VideoPlayerActivity
@@ -32,9 +35,10 @@ import org.jetbrains.anko.support.v4.swipeRefreshLayout
 class Home1Fragment : BaseFragment(), GetHomeBannerListener, GetBestHotListener {
 
 
-    var list_num = ArrayList<String>()
+    private var list_num = ArrayList<String>()
     private lateinit var recyclerView: RecyclerView
     private lateinit var rl: RelativeLayout
+    private lateinit var mBestHot: BestHot
     private lateinit var swipeRefreshLayout : SwipeRefreshLayout
     private lateinit var getHomeBannerPresenter : GetHomeBannerPresenter
     private lateinit var getBestHotPresenter : GetBestHotPresenter
@@ -70,8 +74,11 @@ class Home1Fragment : BaseFragment(), GetHomeBannerListener, GetBestHotListener 
         var hotBannerView = hotBanner.getHotBanner(context!!)
         hotBanner.start()
 
-        hotBanner.setOnBannerListener {
-            startActivity<VideoPlayerActivity>()
+        hotBanner.setOnBannerListener { position ->
+//            startActivity<VideoPlayerActivity>(Pair<String,String>(Constant.ROOM_ID,mBestHot.data.get(position).roomId))
+            var intent = Intent(context,VideoPlayerActivity::class.java)
+            intent.putExtra(Constant.ROOM_ID,homeBanners.data.get(position).room.roomId)
+            startActivity(intent)
         }
         hotAdapter.setHeaderView(hotBannerView)
         swipeRefreshLayout.isRefreshing = false
@@ -85,10 +92,11 @@ class Home1Fragment : BaseFragment(), GetHomeBannerListener, GetBestHotListener 
 
     override fun getBestHotSuccess(bestHot: BestHot) {
         LogUtils.e(bestHot.toString())
+        mBestHot = bestHot
     }
 
     override fun getBestHotError(t: Throwable) {
-        SnackbarUtils.with(rl).setMessage("网络连接超时...")
+        t.printStackTrace()
     }
 
     override fun createView(): View {

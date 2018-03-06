@@ -1,5 +1,6 @@
 package com.xxxxxx_yk.doucat.services
 
+import android.text.TextUtils
 import com.blankj.utilcode.util.Utils
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -20,6 +21,8 @@ import java.util.concurrent.TimeUnit
  */
 class RetrofitSingleton private constructor() {
 
+    private var base_Url : String = Constant.BASE_URL
+
     companion object {
         fun get(): RetrofitSingleton {
             return getInstance.services
@@ -29,6 +32,12 @@ class RetrofitSingleton private constructor() {
     object getInstance {
         var services = RetrofitSingleton()
     }
+
+    fun setBaseUrl(url : String) : RetrofitSingleton{
+        this.base_Url = url
+        return this
+    }
+
 
     fun initServices(): Retrofit {
         //设置超时时间,错误重连
@@ -55,7 +64,7 @@ class RetrofitSingleton private constructor() {
         builder.addInterceptor(interceptor)
 
         return Retrofit.Builder()
-                .baseUrl(Constant.BASE_URL)
+                .baseUrl(base_Url)
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

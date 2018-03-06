@@ -5,7 +5,7 @@ package com.xxxxxx_yk.doucat.utils
  */
 object ParamsUtils{
 
-    var baseParams : LinkedHashMap<String , String>
+    private var baseParams : LinkedHashMap<String , String>
 
     init {
         baseParams = BaseParams.getBaseParams()
@@ -13,6 +13,11 @@ object ParamsUtils{
 
     fun getHomeCate(identification : String) : LinkedHashMap<String , String>{
         baseParams.put("identification",identification)
+        return baseParams
+    }
+
+    fun getVideoUrl(roomId : String): LinkedHashMap<String , String>{
+        baseParams.put("roomId",roomId)
         return baseParams
     }
 
