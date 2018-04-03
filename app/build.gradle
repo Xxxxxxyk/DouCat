@@ -44,7 +44,7 @@ dependencies {
     implementation "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$anko_version"
 
     //recyclerview扩展
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
 
     //rx
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"

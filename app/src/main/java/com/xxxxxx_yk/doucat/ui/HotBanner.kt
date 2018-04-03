@@ -8,6 +8,7 @@ import com.xxxxxx_yk.doucat.utils.ViewID
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import org.jetbrains.anko.dip
+import org.jetbrains.anko.margin
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.relativeLayout
 
@@ -28,7 +29,9 @@ class HotBanner(list : List<*>) {
                     setBannerStyle(BannerConfig.NUM_INDICATOR)
                     setImageLoader(GlideImageLoader())
                     isAutoPlay(true)
-                }.lparams(width = matchParent, height = dip(150))
+                }.lparams(width = matchParent, height = dip(150)){
+                    bottomMargin = dip(8)
+                }
             }
         }
     }

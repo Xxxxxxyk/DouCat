@@ -27,4 +27,7 @@ interface APIDoc {
     @GET("/html5/live")
     fun getVideoUrl(@QueryMap params: Map<String, String>) : Observable<LiveVideoUrl>
 
+    @GET("/api/v1/getVerticalRoom")
+    fun getVerticalRoom(@QueryMap params: Map<String, String>) : Observable<VerticalRoom>
+
 }

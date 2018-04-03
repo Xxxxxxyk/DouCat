@@ -2,6 +2,7 @@ package com.xxxxxx_yk.doucat.ui;
 
 import android.view.ViewManager
 import com.github.kimkevin.slidingicontablayout.wigets.SlidingIconTabLayout
+import com.jcodecraeer.xrecyclerview.XRecyclerView
 import com.youth.banner.Banner
 import io.vov.vitamio.widget.VideoView
 import org.jetbrains.anko.custom.ankoView
@@ -25,4 +26,7 @@ internal object ViewToKotlin {
 
     inline fun ViewManager.videoPlayerView(theme: Int = 0) = videoPlayerView(theme){}
     public inline fun ViewManager.videoPlayerView(theme: Int = 0 , init : VideoView.() -> Unit) = ankoView({VideoView(it)},theme, init)
+
+    inline fun ViewManager.xRecyclerView(theme: Int = 0) = xRecyclerView(theme){}
+    public inline fun ViewManager.xRecyclerView(theme: Int = 0 , init : XRecyclerView.() -> Unit) = ankoView({XRecyclerView(it)},theme, init)
 }
