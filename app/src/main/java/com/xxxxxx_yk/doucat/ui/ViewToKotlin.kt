@@ -27,6 +27,4 @@ internal object ViewToKotlin {
     inline fun ViewManager.videoPlayerView(theme: Int = 0) = videoPlayerView(theme){}
     public inline fun ViewManager.videoPlayerView(theme: Int = 0 , init : VideoView.() -> Unit) = ankoView({VideoView(it)},theme, init)
 
-    inline fun ViewManager.xRecyclerView(theme: Int = 0) = xRecyclerView(theme){}
-    public inline fun ViewManager.xRecyclerView(theme: Int = 0 , init : XRecyclerView.() -> Unit) = ankoView({XRecyclerView(it)},theme, init)
 }

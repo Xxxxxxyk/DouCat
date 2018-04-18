@@ -1,82 +1,84 @@
 package com.xxxxxx_yk.doucat.views.impl.home
 
 import android.content.Intent
-import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.view.ViewGroup
 import android.widget.RelativeLayout
+import com.alibaba.android.vlayout.DelegateAdapter
+import com.alibaba.android.vlayout.VirtualLayoutManager
+import com.alibaba.android.vlayout.layout.GridLayoutHelper
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.SnackbarUtils
-import com.jcodecraeer.xrecyclerview.XRecyclerView
 import com.xxxxxx_yk.doucat.R
-import com.xxxxxx_yk.doucat.interfaces.GetBestHotListener
-import com.xxxxxx_yk.doucat.interfaces.GetHomeBannerListener
-import com.xxxxxx_yk.doucat.interfaces.GetVerticalRoomListener
+import com.xxxxxx_yk.doucat.interfaces.*
 import com.xxxxxx_yk.doucat.model.BestHot
 import com.xxxxxx_yk.doucat.model.HomeBanners
-import com.xxxxxx_yk.doucat.model.Hot_Data
+import com.xxxxxx_yk.doucat.model.HomeCate
 import com.xxxxxx_yk.doucat.model.VerticalRoom
 import com.xxxxxx_yk.doucat.presenter.GetBestHotPresenter
 import com.xxxxxx_yk.doucat.presenter.GetHomeBannerPresenter
+import com.xxxxxx_yk.doucat.presenter.GetHomeCatePresenter
 import com.xxxxxx_yk.doucat.presenter.GetVerticalRoomPresenter
-import com.xxxxxx_yk.doucat.ui.HotBanner
-import com.xxxxxx_yk.doucat.ui.ViewToKotlin.xRecyclerView
 import com.xxxxxx_yk.doucat.utils.Constant
 import com.xxxxxx_yk.doucat.views.BaseFragment
-import com.xxxxxx_yk.doucat.views.adapter.HomeHotAdapter
+import com.xxxxxx_yk.doucat.views.adapter.BestHomeHotAdapter
+import com.xxxxxx_yk.doucat.views.adapter.FaceAdapter
+import com.xxxxxx_yk.doucat.views.adapter.MainBannerAdapter
+import com.xxxxxx_yk.doucat.views.adapter.MainTitleAdapter
 import com.xxxxxx_yk.doucat.views.video.VideoPlayerActivity
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.relativeLayout
 import org.jetbrains.anko.support.v4.UI
-import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.dip
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
 
 /**
  * Created by 惜梦哥哥_ on 2017/10/16.
  */
-class Home1Fragment : BaseFragment(), GetHomeBannerListener, GetBestHotListener, GetVerticalRoomListener {
+class Home1Fragment : BaseFragment(), GetHomeBannerListener, GetBestHotListener, GetVerticalRoomListener, GetHomeCateListener {
 
-    private lateinit var xRecyclerView: XRecyclerView
+    private lateinit var mRecyclerView: RecyclerView
+    private lateinit var mSrl: SwipeRefreshLayout
     private lateinit var rl: RelativeLayout
-    private lateinit var getHomeBannerPresenter : GetHomeBannerPresenter
-    private lateinit var getBestHotPresenter : GetBestHotPresenter
-    private var hotAdapter = HomeHotAdapter()
-
+    private lateinit var getHomeBannerPresenter: GetHomeBannerPresenter
+    private lateinit var getBestHotPresenter: GetBestHotPresenter
+    private lateinit var getVerticalRoomPresenter: GetVerticalRoomPresenter
+    private lateinit var getHomeCatePresenter: GetHomeCatePresenter
+    private lateinit var mLayoutManager: VirtualLayoutManager
+    private lateinit var mDelegateAdapter: DelegateAdapter
+    private var adapters = ArrayList<DelegateAdapter.Adapter<RecyclerView.ViewHolder>>()
 
     override fun initListerenAndAdapter() {
-        hotAdapter.setContext(context!!)
-        xRecyclerView.setLoadingListener(object : XRecyclerView.LoadingListener{
-            override fun onLoadMore() {
-                xRecyclerView.loadMoreComplete();
-            }
+        mLayoutManager = VirtualLayoutManager(context!!)
+        mRecyclerView.layoutManager = mLayoutManager
 
-            override fun onRefresh() {
-                //获取首页最热数据
-                getBestHotPresenter = GetBestHotPresenter(this@Home1Fragment)
-                getBestHotPresenter.loadDate()
+        var recyclerPool = RecyclerView.RecycledViewPool()
+        recyclerPool.setMaxRecycledViews(0, 20)
+        mRecyclerView.recycledViewPool = recyclerPool
 
-                var getVerticalRoomPresenter = GetVerticalRoomPresenter(this@Home1Fragment)
-                getVerticalRoomPresenter.loadDate()
-            }
-        })
+        mDelegateAdapter = DelegateAdapter(mLayoutManager, true)
+        mRecyclerView.adapter = mDelegateAdapter
+
+        mSrl.setColorSchemeColors(resources.getColor(R.color.colorPrimary))
+        mSrl.setOnRefreshListener {
+            adapters.clear()
+            initData()
+        }
     }
 
     override fun initData() {
 
+        mSrl.isRefreshing = true
         //获取轮播图数据
         getHomeBannerPresenter = GetHomeBannerPresenter(this)
         getHomeBannerPresenter.loadDate()
 
-        //获取首页最热数据
-        getBestHotPresenter = GetBestHotPresenter(this)
-        getBestHotPresenter.loadDate()
 
-        var getVerticalRoomPresenter = GetVerticalRoomPresenter(this)
-        getVerticalRoomPresenter.loadDate()
     }
 
     override fun otherClick(v: View?) {
@@ -84,56 +86,71 @@ class Home1Fragment : BaseFragment(), GetHomeBannerListener, GetBestHotListener,
     }
 
     override fun getHomeBannerSuccess(homeBanners: HomeBanners) {
-        var list = ArrayList<String>()
-        for (banner in homeBanners.data) {
-            list.add(banner.picUrl)
-        }
+        adapters.add(MainBannerAdapter(homeBanners, context!!, LinearLayoutHelper(), 1))
+        adapters.add(MainTitleAdapter("最热", context!!, LinearLayoutHelper(), 1, VirtualLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dip(40))))
+        mDelegateAdapter.notifyDataSetChanged()
 
-        var hotBanner = HotBanner(list)
-        var hotBannerView = hotBanner.getHotBanner(context!!)
-        hotBanner.start()
-
-        hotBanner.setOnBannerListener { position ->
-            var intent = Intent(context,VideoPlayerActivity::class.java)
-            intent.putExtra(Constant.ROOM_ID,homeBanners.data.get(position).room.roomId)
-            startActivity(intent)
-        }
-        xRecyclerView.addHeaderView(hotBannerView)
+        //获取首页最热数据
+        getBestHotPresenter = GetBestHotPresenter(this)
+        getBestHotPresenter.loadDate()
+        mSrl.isRefreshing = false
     }
 
     override fun getHomeBannerError(t: Throwable) {
+        mSrl.isRefreshing = false
         SnackbarUtils.with(rl).setMessage("网络连接超时...")
         t.printStackTrace()
     }
 
     override fun getBestHotSuccess(bestHot: BestHot) {
         LogUtils.e(bestHot.toString())
-        hotAdapter.getHotData(bestHot.data)
-        hotAdapter.notifyDataSetChanged()
-        xRecyclerView.refreshComplete()
+        adapters.add(BestHomeHotAdapter(context!!, bestHot.data, GridLayoutHelper(2), 8))
+        adapters.add(MainTitleAdapter("颜值", context!!, LinearLayoutHelper(), 1, VirtualLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dip(40))))
+        getVerticalRoomPresenter = GetVerticalRoomPresenter(this)
+        getVerticalRoomPresenter.loadDate()
+        mDelegateAdapter.notifyDataSetChanged()
+        mSrl.isRefreshing = false
     }
 
     override fun getBestHotError(t: Throwable) {
         t.printStackTrace()
-        xRecyclerView.refreshComplete()
+        mSrl.isRefreshing = false
     }
 
     override fun getVerticalRoomSuccess(verticalRoom: VerticalRoom) {
-        hotAdapter.getFaceData(verticalRoom.data)
-        hotAdapter.notifyDataSetChanged()
-        xRecyclerView.refreshComplete()
+        adapters.add(FaceAdapter(context!!, verticalRoom.data, GridLayoutHelper(2), 4))
+        getHomeCatePresenter = GetHomeCatePresenter(this)
+        getHomeCatePresenter.loadDate()
+        mSrl.isRefreshing = false
     }
 
     override fun getVerticalRoomError(t: Throwable) {
-        xRecyclerView.refreshComplete()
+        mSrl.isRefreshing = false
     }
+
+    override fun getHomeCateSuccess(homecate: HomeCate) {
+        LogUtils.e(homecate)
+        for (room_list in homecate.data) {
+            adapters.add(MainTitleAdapter(room_list.tagName, context!!, LinearLayoutHelper(), 1, VirtualLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dip(40))))
+            adapters.add(BestHomeHotAdapter(context!!, room_list.roomList, GridLayoutHelper(2), room_list.roomList.size))
+        }
+        mDelegateAdapter.setAdapters(adapters)
+        mSrl.isRefreshing = false
+    }
+
+    override fun getHomeCateError(t: Throwable) {
+        t.printStackTrace()
+        mSrl.isRefreshing = false
+    }
+
 
     override fun createView(): View {
         return UI {
             rl = relativeLayout {
-                    xRecyclerView = xRecyclerView {
-                        layoutManager = LinearLayoutManager(context)
-                        adapter = hotAdapter
+                mSrl = swipeRefreshLayout {
+                    mRecyclerView = recyclerView {
+
+                    }
                 }.lparams(width = matchParent, height = matchParent)
             }
         }.view

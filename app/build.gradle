@@ -67,4 +67,8 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide_version"
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     implementation project(':vitamio')
+
+    implementation('com.alibaba.android:vlayout:1.2.8@aar') {
+        transitive = true
+    }
 }

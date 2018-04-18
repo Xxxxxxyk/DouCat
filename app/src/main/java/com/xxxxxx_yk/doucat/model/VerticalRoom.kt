@@ -27,7 +27,7 @@ data class VerticalData(
 		@SerializedName("vod_quality") var vodQuality: String, //0
 		@SerializedName("nickname") var nickname: String, //wuli美寶没钱怼
 		@SerializedName("hn") var hn: Int, //0
-		@SerializedName("online") var online: Int, //0
+		@SerializedName("online") var online: String, //0
 		@SerializedName("game_name") var gameName: String, //颜值
 		@SerializedName("child_id") var childId: Int, //581
 		@SerializedName("avatar_mid") var avatarMid: String, //https://apic.douyucdn.cn/upload/avanew/face/201803/24/02/68debea91f07d9e9fd405edb293364eb_middle.jpg

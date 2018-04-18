@@ -30,4 +30,9 @@ interface APIDoc {
     @GET("/api/v1/getVerticalRoom")
     fun getVerticalRoom(@QueryMap params: Map<String, String>) : Observable<VerticalRoom>
 
+    @GET("/api/v1/getHotCate")
+    fun getHomeCate(@QueryMap params: Map<String, String>) : Observable<HomeCate>
+
+
+
 }
