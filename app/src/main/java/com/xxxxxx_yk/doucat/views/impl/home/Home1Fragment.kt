@@ -1,6 +1,5 @@
 package com.xxxxxx_yk.doucat.views.impl.home
 
-import android.content.Intent
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -13,7 +12,10 @@ import com.alibaba.android.vlayout.layout.LinearLayoutHelper
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.SnackbarUtils
 import com.xxxxxx_yk.doucat.R
-import com.xxxxxx_yk.doucat.interfaces.*
+import com.xxxxxx_yk.doucat.interfaces.GetBestHotListener
+import com.xxxxxx_yk.doucat.interfaces.GetHomeBannerListener
+import com.xxxxxx_yk.doucat.interfaces.GetHomeCateListener
+import com.xxxxxx_yk.doucat.interfaces.GetVerticalRoomListener
 import com.xxxxxx_yk.doucat.model.BestHot
 import com.xxxxxx_yk.doucat.model.HomeBanners
 import com.xxxxxx_yk.doucat.model.HomeCate
@@ -22,13 +24,11 @@ import com.xxxxxx_yk.doucat.presenter.GetBestHotPresenter
 import com.xxxxxx_yk.doucat.presenter.GetHomeBannerPresenter
 import com.xxxxxx_yk.doucat.presenter.GetHomeCatePresenter
 import com.xxxxxx_yk.doucat.presenter.GetVerticalRoomPresenter
-import com.xxxxxx_yk.doucat.utils.Constant
 import com.xxxxxx_yk.doucat.views.BaseFragment
 import com.xxxxxx_yk.doucat.views.adapter.BestHomeHotAdapter
 import com.xxxxxx_yk.doucat.views.adapter.FaceAdapter
 import com.xxxxxx_yk.doucat.views.adapter.MainBannerAdapter
 import com.xxxxxx_yk.doucat.views.adapter.MainTitleAdapter
-import com.xxxxxx_yk.doucat.views.video.VideoPlayerActivity
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.relativeLayout
