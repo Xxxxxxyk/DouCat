@@ -12,7 +12,7 @@ data class HomeOtherCate(
 )
 
 data class HomeCateData(
-		@SerializedName("room_list") var roomList: List<Room>,
+		@SerializedName("room_list") var roomList: List<Hot_Data>,
 		@SerializedName("tag_name") var tagName: String, //最热
 		@SerializedName("tag_id") var tagId: String, //9
 		@SerializedName("icon_url") var iconUrl: String,

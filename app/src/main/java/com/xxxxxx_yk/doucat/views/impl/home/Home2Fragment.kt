@@ -71,6 +71,9 @@ class Home2Fragment : BaseFragment(), GetOtherHomeCateListener {
     override fun getOtherHomeCateSuccess(homeOtherCate: HomeOtherCate) {
         this.mHomeOhterCate = homeOtherCate
         for(homeOtherData in homeOtherCate.data){
+            if(homeOtherData.roomList.isEmpty()){
+                continue
+            }
             adapters.add(MainTitleAdapter(homeOtherData.tagName,context!!,LinearLayoutHelper(),1,VirtualLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dip(40))))
             adapters.add(BestHomeHotAdapter(context!!, homeOtherData.roomList, GridLayoutHelper(2), homeOtherData.roomList.size))
         }

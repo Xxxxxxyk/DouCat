@@ -131,6 +131,9 @@ class Home1Fragment : BaseFragment(), GetHomeBannerListener, GetBestHotListener,
     override fun getHomeCateSuccess(homecate: HomeCate) {
         LogUtils.e(homecate)
         for (room_list in homecate.data) {
+            if(room_list.roomList.isEmpty()){
+                continue
+            }
             adapters.add(MainTitleAdapter(room_list.tagName, context!!, LinearLayoutHelper(), 1, VirtualLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dip(40))))
             adapters.add(BestHomeHotAdapter(context!!, room_list.roomList, GridLayoutHelper(2), room_list.roomList.size))
         }
